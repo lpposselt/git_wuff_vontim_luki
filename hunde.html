@@ -700,13 +700,13 @@
       dogWrap.innerHTML = hundSVG(config);
       scene.appendChild(dogWrap);
 
-      // Hund-Name unter dem Hund (klein)
+      card.appendChild(scene);
+
+      // Hund-Name unter der Szene (auf der Karte sichtbar)
       const dogNameDiv = document.createElement("div");
       dogNameDiv.className = "dog-name";
       dogNameDiv.textContent = config.hundName;
-      scene.appendChild(dogNameDiv);
-
-      card.appendChild(scene);
+      card.appendChild(dogNameDiv); // Append to card, not scene
       container.appendChild(card);
 
       // Text-Rotation (nur wenn mehr als ein Text vorhanden)
