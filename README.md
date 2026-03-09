@@ -44,6 +44,7 @@ Git löst konkret die Probleme von oben:
 - **Nichts geht verloren** — jeder frühere Zustand ist wiederherstellbar; einzelne Commits können gezielt rückgängig gemacht werden, ohne die Geschichte zu löschen
 - **Parallel arbeiten** — mehrere Personen können gleichzeitig an verschiedenen Stellen arbeiten
 - **Testen ohne Risiko** — Änderungen in einem geschützten Bereich ausprobieren, bevor sie "live" gehen
+- **Offline arbeiten** — Commits, Branches und lokale Historie funktionieren ohne Internet; Synchronisation mit GitHub erfolgt erst beim nächsten Push/Pull
 
 ## 3. Wie funktioniert das Arbeiten mit Git?
 
@@ -122,6 +123,8 @@ git clone https://github.com/ruedtim/git_wuff "C:\Temp\Repositories\git_wuff"
 - → Git meldet einen **Konflikt**: "Jemand anderes hat in der Zwischenzeit auch etwas geändert"
 - Gemeinsam anschauen: Wie sieht ein Konflikt aus? Wie löst man ihn auf?
 - **Erkenntnis:** Deshalb brauchen wir Branches!
+
+- hier können wir zu demonstrationszwecken einen Commit, der schon eine Zeit zurück liegt, rückgängig machen
 
 ## 4.1. Was passiert, wenn jemand den Code kapputtmacht?
 
