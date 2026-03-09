@@ -34,6 +34,7 @@ Nach jedem Commit auf `main` werden die aktuellen Hunde automatisch auf GitHub P
 ### Git config
 
 > ⚠️ Die Proxy-Zeile ist nur im Kantonsnetzwerk nötig.
+> ⚠️ Ersetze Tim Rüdiger mit Deinem Namen
 
 ```bash
 git config --global http.proxy http://127.0.0.1:9000
@@ -92,6 +93,14 @@ Beispiel zum Klonen des XML-Repos:
 ```bash
 git clone https://github.com/ruedtim/qzh_vibe "C:\Temp\Repositories\qzh_vibe"
 ```
+
+### Hinweis: Deployment & Branch‑Schutz im XML‑Repo
+
+- Der Branch "live" wird automatisch nach jedem Merge deployed und ist unter https://ruedtim.github.io/qzh_vibe erreichbar.
+- Im Unterschied zum Hunde‑Repo ist "live" geschützt:
+    - Direktes Pushen auf "live" ist nicht möglich.
+    - Änderungen kommen nur via Pull Request (PR) in "live".
+    - Mindestens 1 Review (Approval) ist erforderlich, bevor gemerged werden darf.
 
 ## 7. Issues: Aufgaben erfassen und zuweisen
 
