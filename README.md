@@ -56,6 +56,8 @@ Vier Begriffe reichen für den Anfang:
 - **Klonen**: Einmaliges Herunterladen eines Repos von GitHub auf den eigenen Computer — inklusive der gesamten Git-History und der Verknüpfung zu GitHub
 - **Pull Request (PR)**: Eine Anfrage, Änderungen aus einem Branch in den Hauptstrang (`main`) zu übernehmen — eine andere Person prüft die Änderungen, bevor sie "live" gehen
 
+Ein lokales Repository ist die Kopie des Projekts auf deinem Rechner; das Remote-Repository (z.B. auf GitHub) ist die zentrale Version im Internet. Mit `push` sendest du lokale Commits zum Remote, mit `pull` holst du Änderungen vom Remote in dein lokales Repository.
+
 ### Der typische Ablauf:
 
 ```
@@ -76,8 +78,11 @@ Datei ändern → Änderung vormerken (stagen) → Commit → Push zu GitHub
 
 # Praxisteil 1: Hunde-Repo 🐕
 
+Nach jedem Commit auf `main` werden die aktuellen Hunde automatisch auf GitHub Pages deployed. Nach einer kurzen Deploy‑Zeit (meist Sekunden bis wenige Minuten) sind sie unter https://ruedtim.github.io/git_wuff/hunde.html sichtbar.
+
 ## 1. Setup
 
+- "Repositories"-Ordner erstellen auf "C:\Temp\Repositories"
 - Visual Studio Code öffnen
 - Unten links klicken und mit Github-Konto verknüpfen
 
@@ -91,20 +96,25 @@ git config --global user.name "Tim Rüdiger"
 git config --global user.email "tim.ruediger@ji.zh.ch"
 ```
 
-- "Repositories"-Ordner erstellen auf C:-Laufwerk
-
 ## 2. Repository klonen
 
 - Repo klonen in den "Repositories"-Ordner
+
+Beispiel (in PowerShell oder Terminal):
+
+```bash
+git clone https://github.com/ruedtim/git_wuff "C:\Temp\Repositories\git_wuff"
+```
 
 ## 3. Der erste Commit: Hund benennen
 
 - `hunde.html` öffnen
 - Eigenen Hundenamen vergeben
-- Speichern
+- Speichern (Ctrl+s)
 - In VS Code: Änderung vormerken (stagen)
 - Commit-Message schreiben, z.B. "Wolfi erblickt die Welt"
 - Push
+- restliche Konfigurationen durchführen, aber nach jeder Einzelkonfiguration committen (z.B. "Wolfi erhält Sonnenbrille", "Wolfi spricht") und pushen
 
 ## 4. Merge-Konflikt: Was passiert, wenn alle gleichzeitig pushen?
 
@@ -113,21 +123,28 @@ git config --global user.email "tim.ruediger@ji.zh.ch"
 - Gemeinsam anschauen: Wie sieht ein Konflikt aus? Wie löst man ihn auf?
 - **Erkenntnis:** Deshalb brauchen wir Branches!
 
+## 4.1. Was passiert, wenn jemand den Code kapputtmacht?
+
 ## 5. Branches: Sicher arbeiten ohne den Hauptstrang zu gefährden
 
-- Jede/r erstellt einen eigenen Branch, z.B. `feature/mein-hund`
+- Jede/r erstellt einen eigenen Branch, z.B. `Wolfi`
 - Auf dem Branch eine Änderung machen und committen
 - **Pull Request** auf GitHub erstellen und gemeinsam anschauen: Wie wird er gemergt?
 
 ## 6. Einen Commit rückgängig machen
 
-- In VS Code: Rechtsklick auf einen Commit → "Revert Commit"
 - Git erstellt einen neuen Commit, der die Änderung rückgängig macht — die Geschichte bleibt erhalten
 
 
 # Praxisteil 2: XML-Editionsdaten
 
-> Dieser Teil arbeitet mit einem anderen Repository (XML-Editionsdaten). Die Teilnehmenden klonen also ein zweites Repo — der Ablauf ist identisch wie in Schritt 2.
+> Dieser Teil arbeitet mit einem anderen Repository (XML-Editionsdaten). Die Teilnehmenden klonen also ein zweites Repo — in diesem Workshop verwenden wir das Repo `qzh_vibe`.
+
+Beispiel zum Klonen des XML-Repos:
+
+```bash
+git clone https://github.com/ruedtim/qzh_vibe "C:\Temp\Repositories\qzh_vibe"
+```
 
 ## 7. Issues: Aufgaben erfassen und zuweisen
 
@@ -156,10 +173,6 @@ Jede/r nimmt sich ein Issue vor und arbeitet den vollen Workflow durch:
 - Kommentare (`<!-- -->`) in den XML-Dateien prüfen und bereinigen
 - Metadaten prüfen (Datumsangaben, Personen)
 
-## 9. Demo: Grössere Änderungen
-
-- Kurze Demo (kein Hands-on): Wie man mit "Suchen und Ersetzen" über mehrere Dateien hinweg arbeitet
-- Z.B. Links zum Query massenhaft anpassen
 
 ---
 
