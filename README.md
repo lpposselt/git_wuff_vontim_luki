@@ -21,61 +21,6 @@
 
 ---
 
-# Theorieteil
-
-## 1. Status Quo: Unsere Editionsdaten liegen auf Netzlaufwerk
-
-- **Gemeinsam Bearbeiten**, aber nur nacheinander
-- **Wenn eine Datei bearbeitet wird**, wird die alte Version quasi gelöscht
-
-### Probleme:
-
-- Keine Nachvollziehbarkeit, wer wann was geändert hat
-- Keine Möglichkeit, parallel zu arbeiten
-- Keine Möglichkeit, Schritte rückgängig zu machen
-- Keine Möglichkeit, Änderungen zu testen, ohne Schattenablagen zu machen
-- Versionenchaos
-
-## 2. Warum git?
-
-Git löst konkret die Probleme von oben:
-
-- **Jede Änderung wird festgehalten** — wer hat wann was geändert (wie "Track Changes" in Word, aber für alle Dateien)
-- **Nichts geht verloren** — jeder frühere Zustand ist wiederherstellbar; einzelne Commits können gezielt rückgängig gemacht werden, ohne die Geschichte zu löschen
-- **Parallel arbeiten** — mehrere Personen können gleichzeitig an verschiedenen Stellen arbeiten
-- **Testen ohne Risiko** — Änderungen in einem geschützten Bereich ausprobieren, bevor sie "live" gehen
-
-## 3. Wie funktioniert das Arbeiten mit Git?
-
-Vier Begriffe reichen für den Anfang:
-
-- **Repository (Repo)**: Ein Projektordner, der von Git überwacht wird — inklusive der gesamten Änderungshistorie
-- **Commit**: Ein Snapshot — ein gespeicherter Zustand der Dateien mit einer kurzen Beschreibung ("Hundenamen ergänzt")
-- **Branch**: Ein Parallelstrang — man arbeitet auf einer Kopie, ohne den Hauptstrang zu verändern
-- **Push / Pull**: Änderungen hochladen (push) oder herunterladen (pull) — zwischen dem eigenen Computer und GitHub
-- **Klonen**: Einmaliges Herunterladen eines Repos von GitHub auf den eigenen Computer — inklusive der gesamten Git-History und der Verknüpfung zu GitHub
-- **Pull Request (PR)**: Eine Anfrage, Änderungen aus einem Branch in den Hauptstrang (`main`) zu übernehmen — eine andere Person prüft die Änderungen, bevor sie "live" gehen
-
-Ein lokales Repository ist die Kopie des Projekts auf deinem Rechner; das Remote-Repository (z.B. auf GitHub) ist die zentrale Version im Internet. Mit `push` sendest du lokale Commits zum Remote, mit `pull` holst du Änderungen vom Remote in dein lokales Repository.
-
-### Der typische Ablauf:
-
-```
-Datei ändern → Änderung vormerken (stagen) → Commit → Push zu GitHub
-```
-
-## 4. Und was ist Github?
-
-- GitHub ist der **gemeinsame Ort im Internet**, wo unser Repository liegt
-- Wie ein Netzlaufwerk, aber mit Versionshistorie und Kommentarfunktion
-- Dort kann man:
-  - Die Änderungshistorie ansehen
-  - Dateien im Browser anschauen
-  - **Pull Requests** stellen und prüfen (→ Theorie: Pull Request)
-  - **Issues** erstellen: Aufgaben und Fehler erfassen
-
----
-
 # Praxisteil 1: Hunde-Repo 🐕
 
 Nach jedem Commit auf `main` werden die aktuellen Hunde automatisch auf GitHub Pages deployed. Nach einer kurzen Deploy‑Zeit (meist Sekunden bis wenige Minuten) sind sie unter https://ruedtim.github.io/git_wuff/hunde.html sichtbar.
@@ -89,6 +34,7 @@ Nach jedem Commit auf `main` werden die aktuellen Hunde automatisch auf GitHub P
 ### Git config
 
 > ⚠️ Die Proxy-Zeile ist nur im Kantonsnetzwerk nötig.
+> ⚠️ Ersetze Tim Rüdiger mit Deinem Namen
 
 ```bash
 git config --global http.proxy http://127.0.0.1:9000
@@ -123,6 +69,8 @@ git clone https://github.com/ruedtim/git_wuff "C:\Temp\Repositories\git_wuff"
 - Gemeinsam anschauen: Wie sieht ein Konflikt aus? Wie löst man ihn auf?
 - **Erkenntnis:** Deshalb brauchen wir Branches!
 
+- hier können wir zu demonstrationszwecken einen Commit, der schon eine Zeit zurück liegt, rückgängig machen
+
 ## 4.1. Was passiert, wenn jemand den Code kapputtmacht?
 
 ## 5. Branches: Sicher arbeiten ohne den Hauptstrang zu gefährden
@@ -145,6 +93,14 @@ Beispiel zum Klonen des XML-Repos:
 ```bash
 git clone https://github.com/ruedtim/qzh_vibe "C:\Temp\Repositories\qzh_vibe"
 ```
+
+### Hinweis: Deployment & Branch‑Schutz im XML‑Repo
+
+- Der Branch "live" wird automatisch nach jedem Merge deployed und ist unter https://ruedtim.github.io/qzh_vibe erreichbar.
+- Im Unterschied zum Hunde‑Repo ist "live" geschützt:
+    - Direktes Pushen auf "live" ist nicht möglich.
+    - Änderungen kommen nur via Pull Request (PR) in "live".
+    - Mindestens 1 Review (Approval) ist erforderlich, bevor gemerged werden darf.
 
 ## 7. Issues: Aufgaben erfassen und zuweisen
 
@@ -200,5 +156,3 @@ Der typische Workflow für unsere Editionsarbeit:
 | **Pull Request (PR)** | Eine Anfrage, Änderungen aus einem Branch in den Hauptstrang zu übernehmen — mit Review |
 | **Issue** | Eine Aufgabe oder ein Fehler, der im Repository erfasst und zugewiesen wird |
 | **Merge-Konflikt** | Entsteht, wenn zwei Personen die gleiche Stelle geändert haben — muss manuell gelöst werden |
-    
-    
